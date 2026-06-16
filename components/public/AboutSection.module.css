@@ -1,0 +1,124 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.textCol { display: flex; flex-direction: column; gap: 24px; }
+
+.aboutText {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+
+.counters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.counterItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  transition: var(--transition-smooth);
+}
+
+.counterItem:hover {
+  border-color: var(--glass-border-accent);
+  background: var(--glass-bg-hover);
+}
+
+.counterValue {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.counterLabel {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.deliveryNote {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: var(--accent-gold-dim);
+  border: 1px solid rgba(240, 184, 75, 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--accent-gold);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* Pillars */
+.pillarsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 60px;
+}
+
+.pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+}
+
+.pillarIcon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: var(--accent-cyan-dim);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-cyan);
+  transition: var(--transition-smooth);
+}
+
+.pillar:hover .pillarIcon {
+  background: linear-gradient(135deg, var(--accent-cyan), #0088aa);
+  color: #000;
+  box-shadow: 0 4px 16px var(--accent-cyan-glow);
+}
+
+.pillarTitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.pillarDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; gap: 40px; }
+  .pillarsCol { padding-top: 0; }
+}
+
+@media (max-width: 480px) {
+  .counters { grid-template-columns: 1fr 1fr; }
+}
