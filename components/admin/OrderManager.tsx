@@ -193,7 +193,7 @@ export default function OrderManager() {
               {/* Customer Info */}
               <div style={{ padding: '16px', background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)' }}>
                 <h4 style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px' }}>Customer Information</h4>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', fontSize: '0.95rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', fontSize: '0.95rem', marginBottom: '12px' }}>
                   <div>
                     <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', display: 'block' }}>Name</span>
                     <strong>{selectedOrder.customerName}</strong>
@@ -207,6 +207,14 @@ export default function OrderManager() {
                     </strong>
                   </div>
                 </div>
+                {selectedOrder.deliveryAddress && (
+                  <div>
+                    <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', display: 'block', marginBottom: '4px' }}>📍 Delivery Address</span>
+                    <div style={{ background: 'rgba(255, 200, 0, 0.06)', border: '1px solid rgba(255, 200, 0, 0.2)', borderRadius: 'var(--radius-sm)', padding: '10px 12px', fontSize: '0.9rem', color: 'var(--text-primary)', whiteSpace: 'pre-line' }}>
+                      {selectedOrder.deliveryAddress}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Specs */}

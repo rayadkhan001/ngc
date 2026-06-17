@@ -2,3 +2,10 @@ note for ngc
 password: ngc2026
 
 need a address area of customers where the products will be delivered
+
+FloatingCTA-module__6of_mq__floatingBtn FloatingCTA-module__6of_mq__visible = call button on site right bottom corner sticky button functionless, 
+it must show something maybe number or ask permission to open up whatsapp or dial pad to make a call
+
+from index.html remove 'high-fans' from text. i cannot recognize index.html how to remove them? where can i find html doc taht is being used
+
+after this site is complete if i want to make it live through vercel without domain to show live for free or do i get a domain and hosting? if just upload or migrate the site from my local pc server to any hosting with domain will it work?

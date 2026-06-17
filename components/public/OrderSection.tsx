@@ -5,7 +5,7 @@ import { Product } from '@/lib/data';
 import { useScrollReveal } from '@/lib/hooks';
 import {
   ShoppingCart, Tag, X, CheckCircle, AlertCircle,
-  Ruler, ChevronDown, Send, Phone
+  Ruler, ChevronDown, Send, Phone, MapPin
 } from 'lucide-react';
 import styles from './OrderSection.module.css';
 
@@ -26,6 +26,7 @@ export default function OrderSection({ selectedProduct, onClearSelected }: Props
     notes: '',
     customerName: '',
     customerPhone: '',
+    deliveryAddress: '',
   });
   const [couponState, setCouponState] = useState<{ valid: boolean; discount: number; message: string } | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -75,6 +76,7 @@ export default function OrderSection({ selectedProduct, onClearSelected }: Props
     if (!form.width || parseFloat(form.width) <= 0) e.width = 'Enter a valid width';
     if (!form.height || parseFloat(form.height) <= 0) e.height = 'Enter a valid height';
     if (!form.customerName.trim()) e.customerName = 'Your name is required';
+    if (!form.deliveryAddress.trim()) e.deliveryAddress = 'Delivery address is required';
     
     const phoneTrimmed = form.customerPhone.trim();
     if (!phoneTrimmed) {
@@ -105,6 +107,7 @@ export default function OrderSection({ selectedProduct, onClearSelected }: Props
       notes: form.notes,
       customerName: form.customerName,
       customerPhone: form.customerPhone,
+      deliveryAddress: form.deliveryAddress,
       subtotal,
       total,
       status: 'pending' as const,
@@ -120,7 +123,7 @@ export default function OrderSection({ selectedProduct, onClearSelected }: Props
   }
 
   function resetForm() {
-    setForm({ productId: products[0]?.id || '', width: '', height: '', unit: 'feet', quantity: '1', couponCode: '', notes: '', customerName: '', customerPhone: '' });
+    setForm({ productId: products[0]?.id || '', width: '', height: '', unit: 'feet', quantity: '1', couponCode: '', notes: '', customerName: '', customerPhone: '', deliveryAddress: '' });
     setCouponState(null);
     setSubmitted(false);
     setErrors({});
@@ -273,6 +276,19 @@ export default function OrderSection({ selectedProduct, onClearSelected }: Props
                   />
                   {errors.customerPhone && <span className="form-error"><AlertCircle size={12} />{errors.customerPhone}</span>}
                 </div>
+              </div>
+
+              {/* Delivery Address */}
+              <div className="form-group">
+                <label className="form-label"><MapPin size={12} style={{display:'inline',marginRight:4}} />Delivery Address *</label>
+                <textarea
+                  className="form-textarea"
+                  placeholder="House/flat no., road, area, city — where should we deliver?"
+                  value={form.deliveryAddress}
+                  onChange={e => handleChange('deliveryAddress', e.target.value)}
+                  rows={2}
+                />
+                {errors.deliveryAddress && <span className="form-error"><AlertCircle size={12} />{errors.deliveryAddress}</span>}
               </div>
 
               {/* Notes */}
